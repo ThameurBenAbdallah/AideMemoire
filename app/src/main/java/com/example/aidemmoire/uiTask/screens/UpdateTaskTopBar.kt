@@ -13,7 +13,7 @@ import com.example.aidemmoire.R
 
 
 @Composable
-fun UpdateBookTopBar(
+fun UpdateTaskTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (

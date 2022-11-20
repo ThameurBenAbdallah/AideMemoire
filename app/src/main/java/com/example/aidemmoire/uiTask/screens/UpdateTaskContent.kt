@@ -32,12 +32,14 @@ fun UpdateTaskContent(
     ) {
         TextField(
             value = task.title,
+
+            readOnly = false,
             onValueChange = { title ->
                 updateTitle(title)
             },
             placeholder = {
                 Text(
-                    text = stringResource(R.string.task_title)
+                    text = task.title
                 )
             }
         )

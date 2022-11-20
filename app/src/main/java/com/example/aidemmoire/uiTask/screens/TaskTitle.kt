@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun TaskTitle(taskTitle: String) {
     Text(
-    text = "taskTitle",
+    text = taskTitle,
     color = Color.DarkGray,
     fontSize = 12.sp,
     textDecoration = TextDecoration.Underline

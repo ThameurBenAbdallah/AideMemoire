@@ -27,12 +27,13 @@ fun NavGraph (
         ) {
             TasksScreen(
                 navigateToUpdateTaskScreen = { taskId ->
+
                     navController.navigate("${Screen.UpdateTaskScreen.route}/${taskId}")
                 }
             )
         }
         composable(
-            route = "${Screen.UpdateTaskScreen.route}/taskId}",
+            route = "${Screen.UpdateTaskScreen.route}/{taskId}",
             arguments = listOf(
                 navArgument("taskId") {
                     type = NavType.IntType

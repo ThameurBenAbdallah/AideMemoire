@@ -1,27 +1,22 @@
 package com.example.aidemmoire.uiTask
 
-import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.aidemmoire.data.Task
-import com.example.aidemmoire.data.TaskDao
 import com.example.aidemmoire.data.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.SharingStarted
 
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TaskViewModel @Inject constructor(private val repos: TaskRepository) : ViewModel() {
 
-    private var _task by mutableStateOf(Task(0,"",""))
-    val task = _task
+    private var _task by mutableStateOf(Task(0,"","",""))
+    val task : Task
+    get()=_task
     var openDialog by mutableStateOf(false)
     val tasks = repos.geTasksFromRoom()
     /*

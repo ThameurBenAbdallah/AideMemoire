@@ -8,4 +8,5 @@
     <string name="task_titlee">Task title</string>
     <string name="update">Update</string>
     <string name="update_task">Update task</string>
+    <string name="due_date">Enter a due date</string>
 </resources>

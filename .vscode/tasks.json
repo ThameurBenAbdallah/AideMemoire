@@ -1,0 +1,35 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		// {
+		// 	"type": "gradle",
+		// 	"id": "c:\\Users\\LENOVO\\Desktop\\AideMemoirebuildEnvironmentAide Mémoire",
+		// 	"script": "buildEnvironment",
+		// 	"description": "Displays all buildscript dependencies declared in root project 'Aide Mémoire'.",
+		// 	"group": {
+		// 		"kind": "build",
+		// 		"isDefault": true
+		// 	},
+		// 	"project": "Aide Mémoire",
+		// 	"buildFile": "C:\\Users\\LENOVO\\Desktop\\AideMemoire\\build.gradle",
+		// 	"rootProject": "Aide Mémoire",
+		// 	"projectFolder": "c:\\Users\\LENOVO\\Desktop\\AideMemoire",
+		// 	"workspaceFolder": "c:\\Users\\LENOVO\\Desktop\\AideMemoire",
+		// 	"args": "",
+		// 	"javaDebug": false,
+		// 	"problemMatcher": [
+		// 		"$gradle"
+		// 	],
+		// 	"label": "gradle: buildEnvironment"
+		// },
+		{
+            "label": "echo",
+            "type": "shell",
+            "command": "kotlin main.kt -include-runtime -d main.jar",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+	]
+}

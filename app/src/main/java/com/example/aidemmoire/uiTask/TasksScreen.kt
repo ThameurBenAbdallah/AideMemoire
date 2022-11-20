@@ -14,7 +14,7 @@ import com.example.aidemmoire.uiTask.screens.TasksTopBar
 @Composable
 @ExperimentalMaterialApi
 fun TasksScreen(
-    navigateToUpdateTaskScreen: (bookId: Int) -> Unit,
+    navigateToUpdateTaskScreen: (taskId: Int) -> Unit,
     viewModel: TaskViewModel = hiltViewModel()
 ) {
 
@@ -45,7 +45,8 @@ fun TasksScreen(
                     viewModel.addTask(task)
                 }
             )
-        }, floatingActionButton = {
+        },
+        floatingActionButton = {
             AddTaskFloatingActionButton(
                 openDialog = {
                     viewModel.openDialog()

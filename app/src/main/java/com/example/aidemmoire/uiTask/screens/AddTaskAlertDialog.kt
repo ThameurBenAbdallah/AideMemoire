@@ -2,7 +2,7 @@ package com.example.aidemmoire.uiTask.screens
 
 
 
-import android.provider.MediaStore.MediaColumns.AUTHOR
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height

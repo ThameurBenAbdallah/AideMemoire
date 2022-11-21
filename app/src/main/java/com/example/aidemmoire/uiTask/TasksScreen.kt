@@ -45,7 +45,8 @@ fun TasksScreen(
                     viewModel.addTask(task)
                 }
             )
-        }, floatingActionButton = {
+        },
+        floatingActionButton = {
             AddTaskFloatingActionButton(
                 openDialog = {
                     viewModel.openDialog()

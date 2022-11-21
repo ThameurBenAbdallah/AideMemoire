@@ -14,9 +14,11 @@ import javax.inject.Inject
 @HiltViewModel
 class TaskViewModel @Inject constructor(private val repos: TaskRepository) : ViewModel() {
 
+
     private var _task by mutableStateOf(Task(0,"","","",""))
     val task : Task
     get()=_task
+
     var openDialog by mutableStateOf(false)
     val tasks = repos.geTasksFromRoom()
     /*

@@ -13,9 +13,10 @@ data class Task(
     @ColumnInfo (name = "description" )
     val description: String,
 
-    @ColumnInfo (name = "dueDate" )
-    val dueDate: String
-
+    @ColumnInfo (name = "due_date" )
+    val dueDate: String,
+    @ColumnInfo (name = "due_time" )
+val dueTime: String
 
     ) {
 }

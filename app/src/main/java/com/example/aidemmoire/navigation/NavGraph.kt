@@ -27,6 +27,7 @@ fun NavGraph (
         ) {
             TasksScreen(
                 navigateToUpdateTaskScreen = { taskId ->
+
                     navController.navigate("${Screen.UpdateTaskScreen.route}/${taskId}")
                 }
             )

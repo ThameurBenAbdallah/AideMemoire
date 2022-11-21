@@ -44,6 +44,9 @@ fun TaskCard(task: Task,
                 TaskDescription(
                     taskDescription = task.description
                 )
+                TaskDate(
+                    taskDate = task.dueDate
+                )
             }
             Spacer(
                 modifier = Modifier.weight(1f)

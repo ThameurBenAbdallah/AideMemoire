@@ -58,6 +58,14 @@ class TaskViewModel @Inject constructor(private val repos: TaskRepository) : Vie
         _task = task.copy(
             description = description        )
     }
+    fun updateDueDate(dueDate: String){
+        _task = task.copy(
+            dueDate = dueDate        )
+    }
+    fun updateDueTime(dueTime: String){
+        _task = task.copy(
+            dueTime = dueTime        )
+    }
     fun closeDialog() {
         openDialog = false
     }

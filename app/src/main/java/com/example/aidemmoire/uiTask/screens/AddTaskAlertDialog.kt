@@ -116,7 +116,7 @@ fun AddTaskAlertDialog(
                     Spacer(
                         modifier = Modifier.height(16.dp)
                     )
-                    SelectableTextField(
+                    SelectablePicker(
                         textValue = dueDate,
                         onClick={ mDatePickerDialog.show()  },
                         Icon = {
@@ -130,7 +130,7 @@ fun AddTaskAlertDialog(
                     Spacer(
                         modifier = Modifier.height(16.dp)
                     )
-                    SelectableTextField(
+                    SelectablePicker(
                         textValue = dueTime,
                         onClick={ mTimePickerDialog.show()  },
                         Icon = {
@@ -168,22 +168,6 @@ fun AddTaskAlertDialog(
         )
     }
 }
-@Composable
-fun SelectableTextField(
-    modifier: Modifier = Modifier,
-    textValue: String,
-    Icon: @Composable (() -> Unit),
 
-    onClick: () -> Unit
-) {
-    TextField(
-        value = textValue,
-        leadingIcon = Icon,
-        onValueChange = {  },
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        enabled = false
-    )
-}
+
 

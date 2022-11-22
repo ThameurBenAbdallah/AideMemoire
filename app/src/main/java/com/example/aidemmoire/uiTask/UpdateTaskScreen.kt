@@ -4,8 +4,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.aidemmoire.uiTask.screens.UpdateTaskTopBar
 import com.example.aidemmoire.uiTask.screens.UpdateTaskContent
+import com.example.aidemmoire.uiTask.screens.UpdateTaskTopBar
 
 
 @Composable
@@ -30,14 +30,21 @@ fun UpdateTasksScreen(
                 updateTitle = { title ->
                     viewModel.updateTitle(title)
                 },
-                updateAuthor = { author ->
+                updateDescription = { author ->
                     viewModel.updateDescription(author)
                 },
                 updateTask = { task ->
                     viewModel.updateTask(task)
                 },
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
+
+                updateDueDate = { dueDate ->
+                    viewModel.updateDueDate(dueDate)
+
+                },
+                updateDueTime = {dueTime -> viewModel.updateDueTime(dueTime) }
             )
         }
     )
 }
+

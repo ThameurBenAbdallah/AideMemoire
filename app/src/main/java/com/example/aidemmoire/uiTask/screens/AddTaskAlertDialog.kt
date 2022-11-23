@@ -124,7 +124,9 @@ fun AddTaskAlertDialog(
                                 imageVector = Icons.Default.DateRange,
                                 contentDescription = null
                             )
-                        }
+                        },
+
+
 
                     )
                     Spacer(
@@ -139,6 +141,7 @@ fun AddTaskAlertDialog(
                                 contentDescription = null
                             )
                         }
+
 
                     )
                 }

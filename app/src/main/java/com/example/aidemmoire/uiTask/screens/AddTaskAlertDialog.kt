@@ -126,6 +126,8 @@ fun AddTaskAlertDialog(
                             )
                         },
 
+                        placeHolderText = ""
+
 
 
                     )
@@ -140,7 +142,9 @@ fun AddTaskAlertDialog(
                                 painter = painterResource(id =R.drawable.ic_baseline_schedule_24 ),
                                 contentDescription = null
                             )
-                        }
+                        },
+
+                        placeHolderText = ""
 
 
                     )

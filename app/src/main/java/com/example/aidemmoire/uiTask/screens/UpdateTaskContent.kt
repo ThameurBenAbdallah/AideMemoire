@@ -3,8 +3,10 @@ package com.example.aidemmoire.uiTask.screens
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+//import android.util.Log
 import android.widget.DatePicker
 import android.widget.TimePicker
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
@@ -18,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
+
 import androidx.compose.ui.unit.dp
 import com.example.aidemmoire.R
 import com.example.aidemmoire.data.Task
@@ -36,10 +38,13 @@ fun UpdateTaskContent(
     updateDueDate: (dueDate: String) -> Unit,
     updateDueTime: (dueTime: String) -> Unit,
 ) {
-    var dueDate by remember { mutableStateOf(task.dueDate) }
-    var dueTime by remember { mutableStateOf(task.dueTime) }
-    var title by remember { mutableStateOf("moncef") }
-    var description by remember { mutableStateOf(task.description) }
+//    var uiTask by remember {mutableStateOf( Task(task.id, task.title, task.description,task.dueDate,task.dueTime))}
+
+    var dueDate by remember { mutableStateOf("") }
+    var dueTime by remember { mutableStateOf("") }
+
+//    var title by remember { mutableStateOf("") }
+//    var description by remember { mutableStateOf(task.description) }
     val mYear: Int
     val mMonth: Int
     val mDay: Int
@@ -64,6 +69,10 @@ fun UpdateTaskContent(
             dueTime = "$mHour:${mMinute}"
         }, mHour, mMinute, true
     )
+    if (dueDate != "")
+    {updateDueDate(dueDate)}
+    if (dueTime != "")
+    {updateDueTime(dueTime)}
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -71,16 +80,18 @@ fun UpdateTaskContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
+        //Log.d("THAMEUR", dueTime)
         TextField(
-            value = title,
+            value = task.title,
 
             readOnly = false,
-            onValueChange = {
-                title = it
+            onValueChange = { title ->
+                updateTitle(title)
             },
             placeholder = {
                 Text(
-                    text = title
+                    text = task.title
                 )
             }
         )
@@ -88,12 +99,14 @@ fun UpdateTaskContent(
             modifier = Modifier.height(8.dp)
         )
         TextField(
-            value = description,
-            onValueChange = { description = it
+            value = task.description,
+            onValueChange = { description ->
+                updateDescription(description)
+
             },
             placeholder = {
                 Text(
-                    text = description
+                    text = task.description
                 )
             }
         )
@@ -101,37 +114,47 @@ fun UpdateTaskContent(
             modifier = Modifier.height(8.dp)
         )
         SelectablePicker(
-            textValue = dueDate,
-            onClick = { mDatePickerDialog.show() },
+            textValue = task.dueDate,
+            onClick = { mDatePickerDialog.show()
+                      },
+
             Icon = {
                 Icon(
                     imageVector = Icons.Default.DateRange,
                     contentDescription = null
                 )
-            }
+            },
+            placeHolderText = task.dueDate
 
         )
+
         Spacer(
             modifier = Modifier.height(16.dp)
         )
         SelectablePicker(
             textValue = dueTime,
-            onClick = { mTimePickerDialog.show() },
+            onClick = { mTimePickerDialog.show()
+                //Log.d("THAMEUR onClick", dueTime)
+                      },
             Icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_schedule_24),
                     contentDescription = null
                 )
-            }
+            },
+
+            placeHolderText = task.dueTime
 
 
             )
 
         Button(
+
             onClick = {
 
-                val uiTask = Task(task.id, title, description,dueDate,dueTime)
-                updateTask(uiTask)
+
+                updateTask(task)
+                //Log.d("THAMEUR onSubmit", dueTime)
 
                 navigateBack()
             }

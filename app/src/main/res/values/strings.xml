@@ -10,4 +10,5 @@
     <string name="update_task">Update task</string>
     <string name="due_date">Enter a due date</string>
     <string name="all_tasks">Tasks to do:</string>
+    <string name="title">Task title</string>
 </resources>

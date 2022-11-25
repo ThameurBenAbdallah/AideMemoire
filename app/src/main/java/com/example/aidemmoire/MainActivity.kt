@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
         setContent {
 
                 AideMemoireTheme {
-                    NavGraph(navController = rememberNavController())
-
+                    val navController = rememberNavController()
+                    NavGraph(navController = navController)
                 }
 
 

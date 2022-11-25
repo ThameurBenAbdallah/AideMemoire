@@ -1,5 +1,6 @@
 package com.example.aidemmoire.navigation
 
+import android.util.Log
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -10,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.aidemmoire.uiTask.TasksScreen
 import com.example.aidemmoire.uiTask.UpdateTasksScreen
+import com.example.aidemmoire.uiTask.CheckedTasksScreen
 
 
 
@@ -26,11 +28,23 @@ fun NavGraph (
             route = Screen.TasksScreen.route
         ) {
             TasksScreen(
+                navigateToCheckedTasksScreen = { navController.navigate(route = Screen.CheckedTasksScreen.route) },
+
                 navigateToUpdateTaskScreen = { taskId ->
 
-                    navController.navigate("${Screen.UpdateTaskScreen.route}/${taskId}")
-                }
-            )
+                       navController.navigate("${Screen.UpdateTaskScreen.route}/${taskId}")
+                })
+
+        }
+        composable(
+            route = Screen.CheckedTasksScreen.route
+        ) {
+            CheckedTasksScreen(navigateBack = {
+                navController.popBackStack()
+
+
+            })
+
         }
         composable(
             route = "${Screen.UpdateTaskScreen.route}/{taskId}",

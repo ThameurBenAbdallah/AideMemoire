@@ -4,6 +4,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.aidemmoire.R
 import com.example.aidemmoire.uiTask.screens.UpdateTaskContent
 import com.example.aidemmoire.uiTask.screens.UpdateTaskTopBar
 
@@ -20,7 +21,8 @@ fun UpdateTasksScreen(
     Scaffold(
         topBar = {
             UpdateTaskTopBar(
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
+                R.string.update_task
             )
         },
         content = { padding ->

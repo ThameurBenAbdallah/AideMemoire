@@ -1,5 +1,8 @@
 package com.example.aidemmoire.uiTask.screens
 
+import android.service.autofill.OnClickAction
+import android.util.Log
+import android.widget.CompoundButton.OnCheckedChangeListener
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -17,11 +20,14 @@ import androidx.compose.runtime.*
 fun TaskCard(task: Task,
              deleteTask :()-> Unit,
              navigateToUpdateTaskScreen: (taskId:Int) -> Unit,
-             setTaskCompleted : () -> Unit,
-             unSetTaskCompleted : () -> Unit,
-             isChecked: Boolean
+             setTaskCompleted : (task: Task) -> Unit,
+
+
 ){
-    var checked by remember { mutableStateOf(isChecked) }
+    var checked: Boolean by remember { mutableStateOf(false) }
+    Log.d("Thameur initial", "$checked")
+
+
     Card(
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
@@ -66,22 +72,38 @@ fun TaskCard(task: Task,
                 Spacer(
                     modifier = Modifier.weight(1f)
                 )
-
-                Checkbox(
-                checked= checked ,
-                onCheckedChange = {
-                    checked = if (checked) {unSetTaskCompleted
-                        !checked
-                    } else {setTaskCompleted
-                        ! checked
-                    }},
-                enabled = true,
+                CheckBoxComplete(checked,
+                onClick = {checked = !checked
+                    Log.d("Thameur onClick", "$checked")},
 
                 )
+
+
 
 
             }
 
         }
     }
+    if (checked) { setTaskCompleted(task)
+        Log.d("Thameur callback", "$checked")}
 }
+@Composable
+fun CheckBoxComplete(
+    checked: Boolean,
+    onClick:() -> Unit,
+
+
+
+) {
+    Checkbox(
+        checked= checked ,
+        onCheckedChange = {onClick()} ,
+        enabled = true
+
+        )
+    }
+
+
+
+

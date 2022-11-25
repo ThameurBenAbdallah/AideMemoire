@@ -14,12 +14,13 @@ import com.example.aidemmoire.R
 
 @Composable
 fun UpdateTaskTopBar(
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    title:Int
 ) {
     TopAppBar (
         title = {
             Text(
-                text = stringResource(R.string.update_task)
+                text = stringResource(title)
             )
         },
         navigationIcon = {

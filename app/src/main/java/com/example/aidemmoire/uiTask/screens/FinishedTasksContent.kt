@@ -16,14 +16,14 @@ import com.example.aidemmoire.data.Tasks
 @OptIn(ExperimentalComposeApi::class)
 @Composable
 @ExperimentalMaterialApi
-fun TasksContent(padding: PaddingValues,
-                tasks:Tasks,
-                navigateToUpdateTaskScreen : (taskId: Int) -> Unit,
+fun FinishedTasksContent(padding: PaddingValues,
+                 tasks:Tasks,
+                 navigateToUpdateTaskScreen : (taskId: Int) -> Unit,
                  deleteTask:(task:Task) -> Unit,
-                 setTaskCompleted:(task:Task) -> Unit,
+                 unSetTaskCompleted:(task:Task) -> Unit,
 
 
-)
+                 )
 
 
 {
@@ -35,18 +35,18 @@ fun TasksContent(padding: PaddingValues,
         items(
             items = tasks
         ) { task ->
-            if (!task.isCompleted) {
+            if (task.isCompleted) {
                 TaskCard(
                     task = task,
                     deleteTask = {
                         deleteTask(task)
                     },
                     navigateToUpdateTaskScreen = navigateToUpdateTaskScreen,
-                    setTaskCompleted = { setTaskCompleted(task)
+                    setTaskCompleted = { unSetTaskCompleted(task)
                         Log.d("Thameur task content", "callback")},
 
 
-                )
+                    )
             }
         }
     }

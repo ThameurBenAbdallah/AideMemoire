@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.aidemmoire.R
 import com.example.aidemmoire.uiTask.screens.AddTaskAlertDialog
 import com.example.aidemmoire.uiTask.screens.AddTaskFloatingActionButton
 import com.example.aidemmoire.uiTask.screens.TasksContent
@@ -14,8 +15,9 @@ import com.example.aidemmoire.uiTask.screens.TasksTopBar
 @Composable
 @ExperimentalMaterialApi
 fun TasksScreen(
+    navigateToCheckedTasksScreen: () -> Unit,
     navigateToUpdateTaskScreen: (taskId: Int) -> Unit,
-    viewModel: TaskViewModel = hiltViewModel()
+    viewModel: TaskViewModel = hiltViewModel(),
 ) {
 
     val tasks by viewModel.tasks.collectAsState(initial = emptyList())
@@ -25,7 +27,8 @@ fun TasksScreen(
 
     Scaffold(
         topBar = {
-            TasksTopBar()
+            TasksTopBar(R.string.all_tasks,navigateToCheckedTasksScreen)
+
         },
         content = { padding ->
             TasksContent(
@@ -35,8 +38,9 @@ fun TasksScreen(
                     viewModel.deleteTask(task)
                 },
                 navigateToUpdateTaskScreen = navigateToUpdateTaskScreen,
-                setTaskCompleted = { task -> viewModel.setTaskCompleted(task.isCompleted) },
-                unSetTaskCompleted = { task -> viewModel.unSetTaskCompleted(task.isCompleted) },
+                setTaskCompleted =  {task -> viewModel.setTaskCompleted(task)}
+
+
 
             )
             AddTaskAlertDialog(

@@ -1,5 +1,6 @@
 package com.example.aidemmoire.uiTask
 
+import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -66,16 +67,19 @@ class TaskViewModel @Inject constructor(private val repos: TaskRepository) : Vie
         _task = task.copy(
             dueTime = dueTime        )
     }
-    fun setTaskCompleted(isCompleted: Boolean){
-        _task = task.copy(
-            isCompleted = true        )
-        updateTask(task)
+    fun setTaskCompleted(task: Task){
+
+
+        updateTask(task=task.copy(
+            isCompleted = true
+        ) )
+        Log.d("thameur viewModel", "update true")
 
     }
-    fun unSetTaskCompleted(isCompleted: Boolean){
-        _task = task.copy(
-            isCompleted = false        )
-        updateTask(task)
+    fun unSetTaskCompleted(task: Task){
+        updateTask(task=task.copy(
+            isCompleted = false
+        ) )
     }
     fun closeDialog() {
         openDialog = false

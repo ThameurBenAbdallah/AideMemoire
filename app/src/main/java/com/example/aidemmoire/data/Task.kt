@@ -16,7 +16,9 @@ data class Task(
     @ColumnInfo (name = "due_date" )
     val dueDate: String,
     @ColumnInfo (name = "due_time" )
-val dueTime: String
+    val dueTime: String,
+    @ColumnInfo (name = "is_competed")
+    val isCompleted : Boolean
 
     ) {
 }

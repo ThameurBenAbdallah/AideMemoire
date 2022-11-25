@@ -1,25 +1,29 @@
 package com.example.aidemmoire.uiTask.screens
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ExperimentalComposeApi
+import androidx.compose.material.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.aidemmoire.data.Task
+import androidx.compose.material.Checkbox
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.runtime.*
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 @ExperimentalComposeApi
 fun TaskCard(task: Task,
              deleteTask :()-> Unit,
-             navigateToUpdateTaskScreen: (taskId:Int) -> Unit
+             navigateToUpdateTaskScreen: (taskId:Int) -> Unit,
+             setTaskCompleted : () -> Unit,
+             unSetTaskCompleted : () -> Unit,
+             isChecked: Boolean
 ){
+    var checked by remember { mutableStateOf(isChecked) }
     Card(
-        shape = MaterialTheme.shapes.small,
+        shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .padding(
                 start = 8.dp,
@@ -54,9 +58,30 @@ fun TaskCard(task: Task,
             Spacer(
                 modifier = Modifier.weight(1f)
             )
-            DeleteIcon(
-                deleteTask= deleteTask
-            )
+            Column {
+                DeleteIcon(
+                    deleteTask = deleteTask
+
+                )
+                Spacer(
+                    modifier = Modifier.weight(1f)
+                )
+
+                Checkbox(
+                checked= checked ,
+                onCheckedChange = {
+                    checked = if (checked) {unSetTaskCompleted
+                        !checked
+                    } else {setTaskCompleted
+                        ! checked
+                    }},
+                enabled = true,
+
+                )
+
+
+            }
+
         }
     }
 }

@@ -154,7 +154,7 @@ fun AddTaskAlertDialog(
                 TextButton(
                     onClick = {
                         closeDialog()
-                        val task = Task(0, title, description,dueDate,dueTime)
+                        val task = Task(0, title, description,dueDate,dueTime,false)
                         addTask(task)
                     }
                 ) {

@@ -18,10 +18,17 @@ import com.example.aidemmoire.data.Tasks
 fun TasksContent(padding: PaddingValues,
                 tasks:Tasks,
                 navigateToUpdateTaskScreen : (taskId: Int) -> Unit,
-                 deleteTask:(task:Task) -> Unit)
+                 deleteTask:(task:Task) -> Unit,
+                 setTaskCompleted:(task:Task) -> Unit,
+                 unSetTaskCompleted : (task:Task) -> Unit
+)
+
+
 {
     LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(padding)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)
     ) {
         items(
             items = tasks
@@ -31,7 +38,10 @@ fun TasksContent(padding: PaddingValues,
                 deleteTask = {
                     deleteTask(task)
                 },
-                navigateToUpdateTaskScreen = navigateToUpdateTaskScreen
+                navigateToUpdateTaskScreen = navigateToUpdateTaskScreen,
+                setTaskCompleted = {setTaskCompleted(task)         },
+                unSetTaskCompleted = { unSetTaskCompleted(task) },
+                isChecked = task.isCompleted
             )
         }
     }

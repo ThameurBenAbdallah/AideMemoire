@@ -15,7 +15,7 @@ import javax.inject.Inject
 class TaskViewModel @Inject constructor(private val repos: TaskRepository) : ViewModel() {
 
 
-    private var _task by mutableStateOf(Task(0,"","","",""))
+    private var _task by mutableStateOf(Task(0,"","","","",false))
     val task : Task
     get()=_task
 
@@ -65,6 +65,17 @@ class TaskViewModel @Inject constructor(private val repos: TaskRepository) : Vie
     fun updateDueTime(dueTime: String){
         _task = task.copy(
             dueTime = dueTime        )
+    }
+    fun setTaskCompleted(isCompleted: Boolean){
+        _task = task.copy(
+            isCompleted = true        )
+        updateTask(task)
+
+    }
+    fun unSetTaskCompleted(isCompleted: Boolean){
+        _task = task.copy(
+            isCompleted = false        )
+        updateTask(task)
     }
     fun closeDialog() {
         openDialog = false

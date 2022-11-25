@@ -1,15 +1,17 @@
 package com.example.aidemmoire.uiTask.screens
 
 
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.Yellow
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import com.example.aidemmoire.R
 
 
 @Composable
@@ -23,9 +25,11 @@ fun TaskDescription (taskDescription: String) {
     OutlinedTextField(
         value = taskDescription,
         onValueChange = {},
-        label = {Text("Task description")},
+        enabled = false,
+        label = {Text(stringResource(R.string.task_description))},
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Green,
-            unfocusedBorderColor = Yellow)
+            unfocusedBorderColor = Yellow),
+
     )
 }

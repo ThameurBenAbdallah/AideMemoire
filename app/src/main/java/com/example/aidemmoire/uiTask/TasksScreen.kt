@@ -33,8 +33,11 @@ fun TasksScreen(
                 tasks = tasks,
                 deleteTask = { task ->
                     viewModel.deleteTask(task)
-                }
-                ,navigateToUpdateTaskScreen = navigateToUpdateTaskScreen
+                },
+                navigateToUpdateTaskScreen = navigateToUpdateTaskScreen,
+                setTaskCompleted = { task -> viewModel.setTaskCompleted(task.isCompleted) },
+                unSetTaskCompleted = { task -> viewModel.unSetTaskCompleted(task.isCompleted) },
+
             )
             AddTaskAlertDialog(
                 openDialog = viewModel.openDialog,

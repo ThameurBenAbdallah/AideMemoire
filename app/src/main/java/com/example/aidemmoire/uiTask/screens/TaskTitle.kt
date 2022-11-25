@@ -27,11 +27,11 @@ fun TaskTitle(taskTitle: String) {
     fontSize = 12.sp,
     textDecoration = TextDecoration.Underline
 )*/
-    OutlinedTextField(
-        value = taskTitle,
-        onValueChange = {},
-        label = { Text(stringResource(R.string.title))
-        }
+    Text(
+        text = taskTitle.toString(),
+        color = Color.DarkGray,
+        fontSize = 12.sp,
+        textDecoration = TextDecoration.Underline
     )
   /*  OutlinedTextField(
         value = taskTitle,

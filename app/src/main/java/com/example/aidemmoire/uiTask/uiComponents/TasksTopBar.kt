@@ -1,4 +1,5 @@
-package com.example.aidemmoire.uiTask.uiComponents
+package com.example.aidemmoire.uiTask.uiComponents/*
+
 
 
 import android.service.autofill.OnClickAction
@@ -55,4 +56,4 @@ fun ClickableRow(onClickAction: () -> Unit,
             .clickable { onClickAction })
     }
 
-}
+}*/

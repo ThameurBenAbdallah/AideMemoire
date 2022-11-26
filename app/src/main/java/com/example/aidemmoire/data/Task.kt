@@ -20,5 +20,4 @@ data class Task(
     @ColumnInfo (name = "is_competed")
     val isCompleted : Boolean
 
-    ) {
-}
+    )

@@ -5,14 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.navigation.NavHostController
 
 
 import com.example.aidemmoire.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
 import com.example.aidemmoire.ui.theme.AideMemoireTheme
-
-import com.example.aidemmoire.uiTask.TasksScreen
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,8 +26,8 @@ class MainActivity : ComponentActivity() {
         setContent {
 
                 AideMemoireTheme {
-                    NavGraph(navController = rememberNavController())
-
+                    val navController = rememberNavController()
+                    NavGraph(navController = navController)
                 }
 
 

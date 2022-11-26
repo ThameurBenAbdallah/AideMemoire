@@ -8,29 +8,45 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.aidemmoire.uiTask.TasksScreen
-import com.example.aidemmoire.uiTask.UpdateTasksScreen
-
+import com.example.aidemmoire.uiTask.screens.TasksScreen
+import com.example.aidemmoire.uiTask.screens.UpdateTasksScreen
+import com.example.aidemmoire.uiTask.screens.CheckedTasksScreen
 
 
 @Composable
 @ExperimentalMaterialApi
-fun NavGraph (
-    navController: NavHostController
+fun NavGraph(
+    navController: NavHostController,
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.TasksScreen.route
+        startDestination = Screen.TasksScreen.route,
     ) {
         composable(
             route = Screen.TasksScreen.route
         ) {
             TasksScreen(
+
+
                 navigateToUpdateTaskScreen = { taskId ->
 
                     navController.navigate("${Screen.UpdateTaskScreen.route}/${taskId}")
-                }
+                },
+
+                navController = navController
+
+
             )
+
+        }
+        composable(
+            route = Screen.CheckedTasksScreen.route
+        ) {
+            CheckedTasksScreen(navigateBack = {
+                navController.popBackStack()
+            }
+            )
+
         }
         composable(
             route = "${Screen.UpdateTaskScreen.route}/{taskId}",

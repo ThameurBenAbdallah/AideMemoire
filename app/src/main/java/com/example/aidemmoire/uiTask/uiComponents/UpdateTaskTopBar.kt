@@ -1,4 +1,4 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
 
 
 import androidx.compose.material.Icon
@@ -9,17 +9,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.example.aidemmoire.R
 
 
 @Composable
 fun UpdateTaskTopBar(
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    title:Int
 ) {
     TopAppBar (
         title = {
             Text(
-                text = stringResource(R.string.update_task)
+                text = stringResource(title)
             )
         },
         navigationIcon = {

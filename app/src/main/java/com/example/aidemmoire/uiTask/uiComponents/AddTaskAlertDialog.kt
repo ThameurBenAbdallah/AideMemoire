@@ -1,25 +1,17 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
 
 
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.outlined.AccountBox
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.DateRange
-import androidx.compose.material.icons.outlined.Email
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -116,7 +108,7 @@ fun AddTaskAlertDialog(
                     Spacer(
                         modifier = Modifier.height(16.dp)
                     )
-                    SelectableTextField(
+                    SelectablePicker(
                         textValue = dueDate,
                         onClick={ mDatePickerDialog.show()  },
                         Icon = {
@@ -124,13 +116,17 @@ fun AddTaskAlertDialog(
                                 imageVector = Icons.Default.DateRange,
                                 contentDescription = null
                             )
-                        }
+                        },
+
+                        placeHolderText = ""
+
+
 
                     )
                     Spacer(
                         modifier = Modifier.height(16.dp)
                     )
-                    SelectableTextField(
+                    SelectablePicker(
                         textValue = dueTime,
                         onClick={ mTimePickerDialog.show()  },
                         Icon = {
@@ -138,7 +134,10 @@ fun AddTaskAlertDialog(
                                 painter = painterResource(id =R.drawable.ic_baseline_schedule_24 ),
                                 contentDescription = null
                             )
-                        }
+                        },
+
+                        placeHolderText = ""
+
 
                     )
                 }
@@ -147,7 +146,7 @@ fun AddTaskAlertDialog(
                 TextButton(
                     onClick = {
                         closeDialog()
-                        val task = Task(0, title, description,dueDate,dueTime)
+                        val task = Task(0, title, description,dueDate,dueTime,false)
                         addTask(task)
                     }
                 ) {
@@ -168,22 +167,6 @@ fun AddTaskAlertDialog(
         )
     }
 }
-@Composable
-fun SelectableTextField(
-    modifier: Modifier = Modifier,
-    textValue: String,
-    Icon: @Composable (() -> Unit),
 
-    onClick: () -> Unit
-) {
-    TextField(
-        value = textValue,
-        leadingIcon = Icon,
-        onValueChange = {  },
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        enabled = false
-    )
-}
+
 

@@ -1,4 +1,5 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
+import android.util.Log
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,21 +19,35 @@ import com.example.aidemmoire.data.Tasks
 fun TasksContent(padding: PaddingValues,
                 tasks:Tasks,
                 navigateToUpdateTaskScreen : (taskId: Int) -> Unit,
-                 deleteTask:(task:Task) -> Unit)
+                 deleteTask:(task:Task) -> Unit,
+                 setTaskCompleted:(task:Task) -> Unit,
+
+
+)
+
+
 {
     LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(padding)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)
     ) {
         items(
             items = tasks
         ) { task ->
-            TaskCard(
-                task = task,
-                deleteTask = {
-                    deleteTask(task)
-                },
-                navigateToUpdateTaskScreen = navigateToUpdateTaskScreen
-            )
+            if (!task.isCompleted) {
+                TaskCard(
+                    task = task,
+                    deleteTask = {
+                        deleteTask(task)
+                    },
+                    navigateToUpdateTaskScreen = navigateToUpdateTaskScreen,
+                    setTaskCompleted = { setTaskCompleted(task)
+                        Log.d("Thameur task content", "callback")},
+
+
+                )
+            }
         }
     }
 }

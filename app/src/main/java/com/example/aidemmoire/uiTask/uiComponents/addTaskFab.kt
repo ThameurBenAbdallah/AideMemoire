@@ -1,4 +1,4 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
 
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon

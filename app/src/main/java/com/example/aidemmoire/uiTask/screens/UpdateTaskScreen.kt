@@ -1,12 +1,13 @@
-package com.example.aidemmoire.uiTask
+package com.example.aidemmoire.uiTask.screens
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.aidemmoire.R
-import com.example.aidemmoire.uiTask.screens.UpdateTaskContent
-import com.example.aidemmoire.uiTask.screens.UpdateTaskTopBar
+import com.example.aidemmoire.uiTask.TaskViewModel
+import com.example.aidemmoire.uiTask.uiComponents.UpdateTaskContent
+import com.example.aidemmoire.uiTask.uiComponents.UpdateTaskTopBar
 
 
 @Composable

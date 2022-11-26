@@ -1,9 +1,6 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
 
-import android.service.autofill.OnClickAction
 import android.util.Log
-import android.widget.CompoundButton.OnCheckedChangeListener
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.ui.Alignment
@@ -11,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.aidemmoire.data.Task
 import androidx.compose.material.Checkbox
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 
 @OptIn(ExperimentalMaterialApi::class)

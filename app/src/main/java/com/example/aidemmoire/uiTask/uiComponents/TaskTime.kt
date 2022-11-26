@@ -1,11 +1,4 @@
-package com.example.aidemmoire.uiTask.screens
-
-import androidx.compose.material.Text
-import androidx.compose.material.icons.materialIcon
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.sp
+package com.example.aidemmoire.uiTask.uiComponents
 
 // --Commented out by Inspection START (24/11/2022 23:55):
 //@Composable

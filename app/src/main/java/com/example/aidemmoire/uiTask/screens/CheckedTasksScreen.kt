@@ -1,4 +1,4 @@
-package com.example.aidemmoire.uiTask
+package com.example.aidemmoire.uiTask.screens
 
 
 
@@ -9,10 +9,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.aidemmoire.R
-import com.example.aidemmoire.uiTask.screens.*
+import com.example.aidemmoire.uiTask.TaskViewModel
+import com.example.aidemmoire.uiTask.uiComponents.*
 
-@Composable
+
 @ExperimentalMaterialApi
+@Composable
 fun CheckedTasksScreen(
 
     viewModel: TaskViewModel = hiltViewModel(),

@@ -1,4 +1,4 @@
-package com.example.aidemmoire.uiTask.screens
+package com.example.aidemmoire.uiTask.uiComponents
 import android.util.Log
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.PaddingValues

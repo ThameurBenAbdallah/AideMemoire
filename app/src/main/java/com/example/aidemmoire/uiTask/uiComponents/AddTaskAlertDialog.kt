@@ -1,11 +1,13 @@
 package com.example.aidemmoire.uiTask.uiComponents
 
 
-
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.icu.text.DecimalFormat
+import android.util.Log
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -30,7 +32,7 @@ import java.util.*
 fun AddTaskAlertDialog(
     openDialog: Boolean,
     closeDialog: () -> Unit,
-    addTask: (task: Task) -> Unit
+    addTask: (task: Task) -> Unit,
 ) {
     if (openDialog) {
         var title by remember { mutableStateOf("") }
@@ -43,27 +45,29 @@ fun AddTaskAlertDialog(
         val mMonth: Int
         val mDay: Int
         val mHour: Int
-        val mMinute:Int
+        val mMinute: Int
         val mCalendar = Calendar.getInstance()
         // Fetching current year, month and day
         mYear = mCalendar.get(Calendar.YEAR)
         mMonth = mCalendar.get(Calendar.MONTH)
         mDay = mCalendar.get(Calendar.DAY_OF_MONTH)
-        mHour=mCalendar.get(Calendar.HOUR_OF_DAY)
-        mMinute=mCalendar.get(Calendar.MINUTE)
+        mHour = mCalendar.get(Calendar.HOUR_OF_DAY)
+        mMinute = mCalendar.get(Calendar.MINUTE)
         val mContext = LocalContext.current
 
         val mDatePickerDialog = DatePickerDialog(
             mContext,
             { _: DatePicker, mYear: Int, mMonth: Int, mDayOfMonth: Int ->
-                dueDate = "$mDayOfMonth/${mMonth+1}/$mYear"
+                dueDate = "$mDayOfMonth/${mMonth + 1}/$mYear"
             }, mYear, mMonth, mDay
         )
         val mTimePickerDialog = TimePickerDialog(
             mContext,
             { _: TimePicker, mHour: Int, mMinute: Int ->
-                dueTime = "$mHour:${mMinute}"
-            }, mHour, mMinute,true
+                dueTime = mHour.toString().padStart(2, '0').toString() + ":" + mMinute.toString()
+                    .padStart(2, '0').toString()
+                Log.d("tham", dueTime)
+            }, mHour, mMinute, true
         )
 
 
@@ -110,7 +114,7 @@ fun AddTaskAlertDialog(
                     )
                     SelectablePicker(
                         textValue = dueDate,
-                        onClick={ mDatePickerDialog.show()  },
+                        onClick = { mDatePickerDialog.show() },
                         Icon = {
                             Icon(
                                 imageVector = Icons.Default.DateRange,
@@ -121,17 +125,16 @@ fun AddTaskAlertDialog(
                         placeHolderText = ""
 
 
-
                     )
                     Spacer(
                         modifier = Modifier.height(16.dp)
                     )
                     SelectablePicker(
                         textValue = dueTime,
-                        onClick={ mTimePickerDialog.show()  },
+                        onClick = { mTimePickerDialog.show() },
                         Icon = {
                             Icon(
-                                painter = painterResource(id =R.drawable.ic_baseline_schedule_24 ),
+                                painter = painterResource(id = R.drawable.ic_baseline_schedule_24),
                                 contentDescription = null
                             )
                         },
@@ -145,9 +148,21 @@ fun AddTaskAlertDialog(
             confirmButton = {
                 TextButton(
                     onClick = {
-                        closeDialog()
-                        val task = Task(0, title, description,dueDate,dueTime,false)
-                        addTask(task)
+
+                        if (title == "") {
+                            Toast.makeText(mContext, "A task must have a title", Toast.LENGTH_SHORT)
+                                .show()
+
+                        }
+                        if (dueDate == "") {
+                            Toast.makeText(mContext,
+                                "A task must have a deadline date",
+                                Toast.LENGTH_SHORT).show()
+                        } else {
+                            closeDialog()
+                            val task = Task(0, title, description, dueDate, dueTime, false)
+                            addTask(task)
+                        }
                     }
                 ) {
                     Text(

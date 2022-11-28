@@ -20,7 +20,7 @@ fun TaskTitle(taskTitle: String) {
     Text(
         text = taskTitle.toString(),
         color = Color.DarkGray,
-        fontSize = 12.sp,
+        fontSize = 16.sp,
         textDecoration = TextDecoration.Underline
     )
   /*  OutlinedTextField(

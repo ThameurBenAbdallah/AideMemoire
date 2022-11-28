@@ -6,6 +6,7 @@ import android.app.TimePickerDialog
 //import android.util.Log
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -71,6 +72,7 @@ fun UpdateTaskContent(
     )
     if (dueDate != "")
     {updateDueDate(dueDate)}
+    else { Toast.makeText(mContext, "Please type a date", Toast.LENGTH_SHORT).show()}
     if (dueTime != "")
     {updateDueTime(dueTime)}
     Column(
@@ -86,8 +88,8 @@ fun UpdateTaskContent(
             value = task.title,
 
             readOnly = false,
-            onValueChange = { title ->
-                updateTitle(title)
+            onValueChange = {
+                    title -> if (title == "") { Toast.makeText(mContext, "a task must have a title", Toast.LENGTH_SHORT).show()} else updateTitle(title)
             },
             placeholder = {
                 Text(
